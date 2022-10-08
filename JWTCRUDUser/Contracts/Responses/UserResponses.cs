@@ -7,6 +7,6 @@ namespace JWTCRUDUser.Contracts.Responses
 {
     public class UserResponses
     {
-        public IEnumerable<UserResponse> Users {get;set;}
+        public IEnumerable<UserResponse>? Users {get;set;}
     }
 }

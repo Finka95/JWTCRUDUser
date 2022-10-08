@@ -12,8 +12,11 @@ namespace JWTCRUDUser.Endpoints
     [AllowAnonymous]
     public class UserLoginEndpoint : Endpoint<LoginRequest>
     {
+        public ILogger<UserLoginEndpoint>? _Logger {get;init;}
         public override async Task HandleAsync(LoginRequest req, CancellationToken ct)
         {
+            _Logger!.LogDebug($"Create token for user \"{req.Username}\"");
+
             var jwtToken = JWTBearer.CreateToken(
                 signingKey: "This is my super-puper securety token",
                 expireAt: DateTime.UtcNow.AddDays(1),

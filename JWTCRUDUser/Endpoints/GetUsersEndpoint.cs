@@ -16,7 +16,7 @@ namespace JWTCRUDUser.Endpoints
     {
         private readonly UserContext _context;
         private readonly UserMapper _mapper;
-        public ILogger<GetUsersEndpoint> _Logger {get;init;}
+        public ILogger<GetUsersEndpoint>? _Logger {get;init;}
 
         public GetUsersEndpoint(UserMapper mapper, UserContext context)
         {
@@ -26,8 +26,8 @@ namespace JWTCRUDUser.Endpoints
 
         public override async Task HandleAsync(CancellationToken ct)
         {
-            _Logger.LogDebug("Retrivering users");
-            var users = _context.Users.ToArray();
+            _Logger!.LogDebug("Retrivering users");
+            var users = _context!.Users!.ToArray();
 
             var userResponses = new UserResponses
             {
