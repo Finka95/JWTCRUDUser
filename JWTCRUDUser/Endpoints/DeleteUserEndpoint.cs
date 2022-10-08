@@ -6,26 +6,29 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace JWTCRUDUser.Endpoints
 {
-    [HttpGet("api/users/{userId}")]
+    [HttpDelete("api/users/{userId}")]
     [Authorize(Roles = "Admin")]
-    public class GetUserEndpoint : Endpoint<UserIdRequest, UserResponse, UserMapper>
+    public class DeleteUserEndpoint : Endpoint<UserIdRequest, UserResponse, UserMapper>
     {
         private readonly UserContext _context;
-        public ILogger<GetUsersEndpoint>? _Logger {get;init;}
-
-        public GetUserEndpoint(UserContext context)
+        public ILogger<DeleteUserEndpoint>? _Logger {get;init;}
+        
+        public DeleteUserEndpoint(UserContext context)
         {
             _context = context;
         }
+
         public override async Task HandleAsync(UserIdRequest req, CancellationToken ct)
         {
-            _Logger!.LogDebug($"Retrivering users with userID: {req.UserId}");
+            _Logger!.LogDebug($"Delete user from db ({req.UserId})");
             var user = _context!.Users!.FirstOrDefault(u => u.Id == req.UserId);
 
             if(user == null)
                 await SendNotFoundAsync();
             else
             {
+                _context!.Users!.Remove(user);
+                _context.SaveChanges();
                 var userResponses = Map.FromEntity(user!);
                 await SendAsync(userResponses, cancellation: ct);
             }

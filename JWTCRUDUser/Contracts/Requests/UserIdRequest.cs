@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace JWTCRUDUser.Contracts.Requests
 {
-    public class GetUserRequest
+    public class UserIdRequest
     {
         public int UserId {get;set;}
     }
