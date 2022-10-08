@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JWTCRUDUser.Contracts.Requests;
 using JWTCRUDUser.Contracts.Responses;
 using JWTCRUDUser.Mappers;
 using JWTCRUDUser.Models;

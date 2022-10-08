@@ -8,7 +8,7 @@ namespace JWTCRUDUser.Endpoints
 {
     [HttpGet("api/users/{userId}")]
     [Authorize(Roles = "Admin")]
-    public class GetUserEndpoint : Endpoint<UserRequest, UserResponse, UserMapper>
+    public class GetUserEndpoint : Endpoint<GetUserRequest, UserResponse, UserMapper>
     {
         private readonly UserContext _context;
         public ILogger<GetUsersEndpoint>? _Logger {get;init;}
@@ -17,7 +17,7 @@ namespace JWTCRUDUser.Endpoints
         {
             _context = context;
         }
-        public override async Task HandleAsync(UserRequest req, CancellationToken ct)
+        public override async Task HandleAsync(GetUserRequest req, CancellationToken ct)
         {
             _Logger!.LogDebug($"Retrivering users with userID: {req.UserId}");
             var user = _context!.Users!.FirstOrDefault(u => u.Id == req.UserId);

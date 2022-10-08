@@ -8,7 +8,7 @@ using JWTCRUDUser.Models;
 
 namespace JWTCRUDUser.Mappers
 {
-    public class UserMapper : Mapper<UserRequest, UserResponse, User>
+    public class UserMapper : Mapper<GetUserRequest, UserResponse, User>
     {
         public override UserResponse FromEntity(User user)
         {
