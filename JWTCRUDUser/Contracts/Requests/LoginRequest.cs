@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace JWTCRUDUser.Contracts.Requests
 {
-    public class UserRequest
+    public class LoginRequest
     {
-        public int UserId {get;set;}
+        public string? Username {get;set;}
+        public string? Password {get;set;}
     }
 }
