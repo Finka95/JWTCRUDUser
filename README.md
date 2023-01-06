@@ -2,7 +2,7 @@ Web приложение в стиле REST с JWT-авторизацией
 ==============
 В проекте используется:
 - FastEndpoints
-- Sqlite
+- Sqlite --> PostgreSQL
 - JWT
 - .NET 6
 --------------
