@@ -22,7 +22,7 @@ namespace JWTCRUDUser.Endpoints
         public override async Task HandleAsync(CancellationToken ct)
         {
             _Logger!.LogDebug("Retrivering users");
-            var users = _context!.Users!.ToArray();
+            var users = _context!.users!.ToArray();
 
             var userResponses = new UserResponses
             {

@@ -21,13 +21,13 @@ namespace JWTCRUDUser.Endpoints
         public override async Task HandleAsync(UserIdRequest req, CancellationToken ct)
         {
             _Logger!.LogDebug($"Delete user from db ({req.UserId})");
-            var user = _context!.Users!.FirstOrDefault(u => u.Id == req.UserId);
+            var user = _context!.users!.FirstOrDefault(u => u.Id == req.UserId);
 
             if(user == null)
                 await SendNotFoundAsync();
             else
             {
-                _context!.Users!.Remove(user);
+                _context!.users!.Remove(user);
                 _context.SaveChanges();
                 var userResponses = Map.FromEntity(user!);
                 await SendAsync(userResponses, cancellation: ct);

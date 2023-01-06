@@ -20,7 +20,7 @@ namespace JWTCRUDUser.Endpoints
         {
             int userId = Route<int>("userId");
             _Logger!.LogDebug($"Change user (userId = {userId}) to db({user.ToString()})");
-            User userDB = _context!.Users!.FirstOrDefault(u => u.Id == userId);
+            User? userDB = _context!.users!.FirstOrDefault(u => u.Id == userId);
             if(userDB == null)
                 await SendNotFoundAsync();
             else

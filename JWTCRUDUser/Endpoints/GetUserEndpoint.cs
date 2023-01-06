@@ -20,7 +20,7 @@ namespace JWTCRUDUser.Endpoints
         public override async Task HandleAsync(UserIdRequest req, CancellationToken ct)
         {
             _Logger!.LogDebug($"Retrivering users with userID: {req.UserId}");
-            var user = _context!.Users!.FirstOrDefault(u => u.Id == req.UserId);
+            var user = _context!.users!.FirstOrDefault(u => u.Id == req.UserId);
 
             if(user == null)
                 await SendNotFoundAsync();

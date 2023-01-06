@@ -19,7 +19,7 @@ namespace JWTCRUDUser.Endpoints
         public override async Task HandleAsync(User user, CancellationToken ct)
         {
             _Logger!.LogDebug($"Add user to db({user.ToString()})");
-            _context!.Users!.Add(user);
+            _context!.users!.Add(user);
             _context.SaveChanges();
             var userResponses = Map.FromEntity(user!);
             await SendAsync(userResponses, cancellation: ct);
